@@ -25,11 +25,14 @@ export default function Dashboard() {
         setLoading(false);
 
         // Optional: Validate token with backend
-        const response = await fetch("http://localhost:5000/api/profile", {
-          headers: {
-            "x-auth-token": token,
-          },
-        });
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/profile`,
+          {
+            headers: {
+              "x-auth-token": token,
+            },
+          }
+        );
 
         if (!response.ok) {
           throw new Error("Invalid token");
